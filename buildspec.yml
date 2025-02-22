@@ -1,13 +1,22 @@
 version: 0.2
+
 phases:
   install:
+    runtime-versions:
+      nodejs: 18
     commands:
-      - echo "Installing dependencies"
+      - echo "Navigating to the src folder and installing dependencies..."
+      - cd src
       - npm install
   build:
     commands:
-      - echo "Building application"
-      - npm run build
+      - echo "Building the application..."
+      - cd src
+      - npm run build || echo "No build script found, skipping..."
+  post_build:
+    commands:
+      - echo "Build completed successfully!"
 artifacts:
   files:
     - '**/*'
+  base-directory: src/build

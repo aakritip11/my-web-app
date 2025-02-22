@@ -5,17 +5,19 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo "Navigating to the src folder and installing dependencies..."
+      - echo "Navigating to src folder and installing dependencies..."
       - cd src
       - npm install
+
   build:
     commands:
       - echo "Building the application..."
-      - cd src
-      - npm run build || echo "No build script found, skipping..."
+      - npm run build
+
   post_build:
     commands:
-      - echo "Build completed successfully!"
+      - echo "Build complete!"
+
 artifacts:
   files:
     - '**/*'
